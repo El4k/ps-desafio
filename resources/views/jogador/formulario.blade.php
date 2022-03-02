@@ -1,62 +1,62 @@
 {{-- Nome --}}
 
-{{-- <div class="row">
-    <label class="col-sm-2 col-form-label">{{ __('INSIRAAQUISUAVARIAVEL') }}</label>
-    <div class="col-sm-7">
-        <div class="form-group{{ $errors->has('INSIRAAQUISUAVARIAVEL') ? ' has-danger' : '' }}">
-            <input class="form-control{{ $errors->has('INSIRAAQUISUAVARIAVEL') ? ' is-invalid' : '' }}"
-                name="INSIRAAQUISUAVARIAVEL" id="input-INSIRAAQUISUAVARIAVEL" type="text"
-                placeholder="{{ __('INSIRAAQUISUAVARIAVEL') }}"
-                value="{{ isset($INSIRAAQUISUAVARIAVEL) ? $INSIRAAQUISUAVARIAVEL->INSIRAAQUISUAVARIAVEL : old('INSIRAAQUISUAVARIAVEL') }}"
-                required="true" aria-required="true" />
-            @if ($errors->has('INSIRAAQUISUAVARIAVEL'))
-                <span id="INSIRAAQUISUAVARIAVEL-error" class="error text-danger"
-                    for="input-INSIRAAQUISUAVARIAVEL">{{ $errors->first('INSIRAAQUISUAVARIAVEL') }}</span>
-            @endif
-        </div>
+<div class="row">
+    <label class="col-sm-2 col-form-label">{{ __('Nome do Jogador') }}</label>
+    <div>
+        <input type="text" id="nome" name="nome" value="{{ isset($jogador) ? $jogador->nome : old('nome') }}"
+            class="form-control @error('nome') is-invalid @enderror" placeholder="Nome do Jogador" required>
+        @error('nome')
+            <span class="invalid-feedback" role="alert">
+                <i class="fi-circle-cross"></i><strong> {{ $message }}</strong>
+            </span>
+        @enderror
     </div>
-</div> --}}
+</div>
 
-{{-- Data de nascimento --}}
+{{-- Data --}}
 
-{{-- <div class="row">
-    <label class="col-sm-2 col-form-label">{{ __('INSIRAAQUISUAVARIAVEL') }}</label>
-    <div class="col-sm-7">
-        <div class="form-group{{ $errors->has('INSIRAAQUISUAVARIAVEL') ? ' has-danger' : '' }}">
-            <input class="form-control{{ $errors->has('INSIRAAQUISUAVARIAVEL') ? ' is-invalid' : '' }}"
-                name="INSIRAAQUISUAVARIAVEL" id="input-INSIRAAQUISUAVARIAVEL" type="text"
-                placeholder="{{ __('INSIRAAQUISUAVARIAVEL') }}"
-                value="{{ isset($INSIRAAQUISUAVARIAVEL) ? $INSIRAAQUISUAVARIAVEL->INSIRAAQUISUAVARIAVEL : old('INSIRAAQUISUAVARIAVEL') }}"
-                required="true" aria-required="true" />
-            @if ($errors->has('INSIRAAQUISUAVARIAVEL'))
-                <span id="INSIRAAQUISUAVARIAVEL-error" class="error text-danger"
-                    for="input-INSIRAAQUISUAVARIAVEL">{{ $errors->first('INSIRAAQUISUAVARIAVEL') }}</span>
-            @endif
-        </div>
+<div class="row">
+    <label class="col-sm-2 col-form-label">{{ __('Data de Nascimento do Jogador') }}</label>
+    <div>
+        <textarea id="data" name="data" class="form-control @error('data') is-invalid @enderror"
+            placeholder="Escreva uma descrição curta sobre o jogador"
+            required>{{ isset($jogador) ? $jogador->data : old('data') }}</textarea>
+        @error('data')
+            <span class="invalid-feedback" role="alert">
+                <i class="fi-circle-cross"></i><strong> {{ $message }}</strong>
+            </span>
+        @enderror
     </div>
-</div> --}}
-
+</div>
 
 {{-- Nacionalidade --}}
-{{-- <div class="row">
+<div class="row">
     <label class="col-sm-2 col-form-label">{{ __('Nacionalidade') }}</label>
-    <div class="col-sm-7">
-        <select name="nacionalidade_id" id="nacionalidade" required>
-            @if (isset($nacionalidades))
+    <div>
+        <select id="nacionalidade_id" name="nacionalidade_id"
+            class="form-control @error('nacionalidade_id') is-invalid @enderror" required>
+            <option value="">--- Selecione uma Nacionalidade ---</option>
+            @isset($nacionalidades)
                 @foreach ($nacionalidades as $nacionalidade)
-                    <option value="{{ $nacionalidade->id }}">{{ $nacionalidade->nacionalidade }}</option>
+                    <option @if (isset($jogador) && $jogador->nacionalidade_id == $nacionalidade->id) selected @endif value="{{ $nacionalidade->id }}">
+                        {{ $nacionalidade->nacionalidade }}
+                    </option>
                 @endforeach
-            @endif
+            @endisset
         </select>
+        @error('nacionalidade_id')
+            <span class="invalid-feedback" role="alert">
+                <i class="fi-circle-cross"></i><strong> {{ $message }}</strong>
+            </span>
+        @enderror
     </div>
-</div> --}}
+</div>
 
 {{-- Imagem --}}
-{{-- <div class="row">
-    <label class="" @if (!isset($jogador)) required @endif">{{ __('Imagem') }}</label>
-    <div class="col-sm-7">
+<div class="row">
+    <div class="col-sm-2 col-form-label">
         <label class="@if (!isset($jogador)) required @endif" for="image">Imagens</label>
-        <input Multiple type="file" name="imagens[]" aria-describedby="fileHelp" class="form-control" accept="image/*"
+        <input type="file" name="imagem" class="form-control" accept="image/*"
             @if (!isset($jogador)) required @endif>
     </div>
-</div> --}}
+</div>
