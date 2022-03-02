@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Jogadores', 'titlePage' => __('Jogadores')])
+{{-- @extends('layouts.app', ['activePage' => 'suavariavel', 'titlePage' => __('suavariavel')])
 
 @section('content')
     <div class="content">
@@ -6,11 +6,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <form id="form-member" method="POST" class="form-horizontal"
-                        action="{{ isset($jogador) ? route('jogador.update', $jogador->id) : route('jogador.store') }}"
+                        action="{{ isset($SUAVARIAVELSINGULAR) ? route('SUAVARIAVELSINGULAR.update', $SUAVARIAVELSINGULAR->id) : route('SUAVARIAVELSINGULAR.store') }}"
                         enctype="multipart/form-data">
 
                         @csrf
-                        @isset($jogador)
+                        @isset($SUAVARIAVELSINGULAR)
                             @method("PUT")
                         @else
                             @method("POST")
@@ -19,9 +19,9 @@
                         <div class="card ">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">
-                                    {{ isset($jogador) ? __('Edit jogador') : __('Create jogador') }}
+                                    {{ isset($SUAVARIAVELSINGULAR) ? __('Edit SUAVARIAVELSINGULAR') : __('Create SUAVARIAVELSINGULAR') }}
                                 </h4>
-                                <p class="card-category">{{ __('jogador information') }}</p>
+                                <p class="card-category">{{ __('SUAVARIAVELSINGULAR information') }}</p>
                             </div>
                             <div class="card-body ">
                                 @if (session('status'))
@@ -37,13 +37,12 @@
                                         </div>
                                     </div>
                                 @endif
-                                @component('jogador.formulario', ['jogador' => isset($jogador) ? $jogador : null,
-                                    'nacionalidades' => $nacionalidades])
+                                @component('admin.SUAVARIAVELSINGULAR.form', ['SUAVARIAVELSINGULAR' => isset($SUAVARIAVELSINGULAR) ? $SUAVARIAVELSINGULAR : null])
                                 @endcomponent
                             </div>
                             <div class="card-footer ml-auto mr-auto">
                                 <button type="submit" class="btn btn-success">{{ __('Save') }}</button>
-                                <a href="{{ route('jogador.index') }}" class="btn btn-secondary">Voltar</a>
+                                <a href="{{ route('SUAVARIAVELSINGULAR.index') }}" class="btn btn-secondary">Voltar</a>
                             </div>
                         </div>
                     </form>
@@ -54,4 +53,4 @@
         </div> <!-- end container -->
     </div>
     <!-- end wrapper -->
-@endsection
+@endsection --}}

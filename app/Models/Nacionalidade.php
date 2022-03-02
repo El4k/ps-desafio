@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nacionalidade extends Model
 {
+    use HasFactory;
+
+    protected $table = "nacionalidades";
+
     protected $fillable = [
         'nacionalidade'
     ];
